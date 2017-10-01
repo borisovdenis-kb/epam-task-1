@@ -49,6 +49,7 @@ public class Enemy extends MovableObject {
     /**
      * Changes coordinates of object according to time.
      * It's uniform rectilinear motion.
+     *
      * @param time
      */
     @Override

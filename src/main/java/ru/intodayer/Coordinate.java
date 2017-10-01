@@ -7,6 +7,16 @@ public class Coordinate {
     private double x;
     private double y;
 
+    public Coordinate() {
+        x = 0.0;
+        y = 0.0;
+    }
+
+    public Coordinate(Coordinate coordinate) {
+        x = coordinate.getX();
+        y = coordinate.getY();
+    }
+
     public Coordinate(double x, double y) {
         this.x = x;
         this.y = y;
@@ -52,5 +62,10 @@ public class Coordinate {
         temp = Double.doubleToLongBits(y);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Coordinate(x: " + x + ", y: " + y + ')';
     }
 }

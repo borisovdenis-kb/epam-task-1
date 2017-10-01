@@ -19,6 +19,7 @@ public abstract class MovableObject {
 
     /**
      * Changes coordinates of object according to time.
+     *
      * @param time
      */
     public abstract void flyForward(double time);
