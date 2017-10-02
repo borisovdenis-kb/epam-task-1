@@ -18,8 +18,24 @@ public class Coordinate {
     }
 
     public Coordinate(double x, double y) {
-        this.x = x;
-        this.y = y;
+        this.x = checkX(x);
+        this.y = checkY(y);
+    }
+
+    private double checkX(double x) {
+        if (x >= 0 && x < MAX_OX) {
+            return x;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private double checkY(double y) {
+        if (y >= 0 && y < MAX_OX) {
+            return y;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     public double getX() {
@@ -27,7 +43,7 @@ public class Coordinate {
     }
 
     public void setX(double x) {
-        if (x >= 0 && x < MAX_OX) this.x = x;
+        this.x = checkX(x);
     }
 
     public double getY() {
@@ -35,7 +51,7 @@ public class Coordinate {
     }
 
     public void setY(double y) {
-        if (y >= 0 && y < MAX_OY) this.y = y;
+        this.y = checkY(y);
     }
 
     public double getDistance(Coordinate coordinate) {
