@@ -1,5 +1,6 @@
 package ru.intodayer.MovableObject.Enemy;
 
+import ru.intodayer.Coordinate;
 import ru.intodayer.Planet;
 import ru.intodayer.Weapon;
 
@@ -7,9 +8,9 @@ import ru.intodayer.Weapon;
 public class Alien extends Enemy {
     private Weapon weapon;
 
-    public Alien(Weapon weapon, Planet planet) {
+    public Alien(Coordinate position, Planet planet, int health, Weapon weapon) {
+        super(position, planet, health);
         this.weapon = weapon;
-        this.planet = planet;
     }
 
     public Weapon getWeapon() {

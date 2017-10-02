@@ -1,5 +1,7 @@
 package ru.intodayer.MovableObject.Enemy;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 import ru.intodayer.Planet;
 import ru.intodayer.Coordinate;
@@ -21,12 +23,8 @@ public class Enemy extends MovableObject {
         TG = 0;
     }
 
-    public Enemy(Planet planet, int health) {
-        Random random = new Random();
-        this.currentPos = new Coordinate(
-                            random.nextInt((int) currentPos.MAX_OX),
-                            random.nextInt((int) currentPos.MAX_OY));
-        this.planet = planet;
+    public Enemy(Coordinate position, Planet planet, int health) {
+        super(position, planet);
         this.health = health;
         this.TG = calcTG();
         this.SPEED_OY = calcSpeedOY();
@@ -55,8 +53,12 @@ public class Enemy extends MovableObject {
     @Override
     public void flyForward(double time) {
         previousPos = currentPos;
-        currentPos.setX(previousPos.getX() + SPEED_OY * time * TG);
-        currentPos.setY(previousPos.getY() + SPEED_OY * time);
+        double newX = previousPos.getX() + SPEED_OY * time * TG;
+        double newY = previousPos.getY() + SPEED_OY * time;
+        newX = new BigDecimal(newX).setScale(4, RoundingMode.HALF_UP).doubleValue();
+        newY = new BigDecimal(newY).setScale(4, RoundingMode.HALF_UP).doubleValue();
+        currentPos.setX(newX);
+        currentPos.setY(newY);
     }
 
     public int getHealth() {

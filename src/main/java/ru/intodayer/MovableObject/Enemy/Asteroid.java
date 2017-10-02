@@ -1,19 +1,19 @@
 package ru.intodayer.MovableObject.Enemy;
 
+import ru.intodayer.Coordinate;
 import ru.intodayer.Planet;
 
 
 public class Asteroid extends Enemy {
     private int damage;
 
-    public Asteroid(int damage, Planet planet) {
+    public Asteroid(Coordinate position, Planet planet, int health, int damage) {
+        super(position, planet, health);
         this.damage = damage;
-        this.planet = planet;
     }
 
     public void crash() {
-        if (getCurrentPos().equals(planet.getPosition())) {
-            planet.decreaseHealth(damage);
-        }
+        this.planet.decreaseHealth(damage);
+        health = 0;
     }
 }
