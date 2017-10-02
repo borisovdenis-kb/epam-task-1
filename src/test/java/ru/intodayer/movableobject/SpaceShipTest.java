@@ -1,12 +1,12 @@
-package ru.intodayer.MovableObject;
+package ru.intodayer.movableobject;
 
 import org.junit.jupiter.api.*;
 import junit.framework.TestCase;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import ru.intodayer.Coordinate;
-import ru.intodayer.MovableObject.Enemy.Alien;
-import ru.intodayer.MovableObject.Enemy.Asteroid;
+import ru.intodayer.movableobject.enemy.Alien;
+import ru.intodayer.movableobject.enemy.Asteroid;
 import ru.intodayer.Planet;
 import ru.intodayer.Weapon;
 

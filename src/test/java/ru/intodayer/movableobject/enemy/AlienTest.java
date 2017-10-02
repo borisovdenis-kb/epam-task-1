@@ -1,4 +1,4 @@
-package ru.intodayer.MovableObject.Enemy;
+package ru.intodayer.movableobject.enemy;
 
 import org.junit.jupiter.api.Test;
 import junit.framework.TestCase;

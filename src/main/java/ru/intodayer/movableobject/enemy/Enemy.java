@@ -1,11 +1,11 @@
-package ru.intodayer.MovableObject.Enemy;
+package ru.intodayer.movableobject.enemy;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Random;
+
 import ru.intodayer.Planet;
 import ru.intodayer.Coordinate;
-import ru.intodayer.MovableObject.MovableObject;
+import ru.intodayer.movableobject.MovableObject;
 
 
 public class Enemy extends MovableObject {

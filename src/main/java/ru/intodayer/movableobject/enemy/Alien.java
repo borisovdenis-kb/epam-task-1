@@ -1,4 +1,4 @@
-package ru.intodayer.MovableObject.Enemy;
+package ru.intodayer.movableobject.enemy;
 
 import ru.intodayer.Coordinate;
 import ru.intodayer.Planet;

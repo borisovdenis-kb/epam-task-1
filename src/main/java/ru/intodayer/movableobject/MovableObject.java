@@ -1,4 +1,4 @@
-package ru.intodayer.MovableObject;
+package ru.intodayer.movableobject;
 
 import ru.intodayer.Coordinate;
 import ru.intodayer.Planet;

@@ -1,9 +1,9 @@
-package ru.intodayer.MovableObject;
+package ru.intodayer.movableobject;
 
 import ru.intodayer.Coordinate;
 import ru.intodayer.Planet;
 import ru.intodayer.Weapon;
-import ru.intodayer.MovableObject.Enemy.Enemy;
+import ru.intodayer.movableobject.enemy.Enemy;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
