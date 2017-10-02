@@ -11,10 +11,10 @@ import java.math.RoundingMode;
 // TODO: Singleton
 
 public class SpaceShip extends MovableObject {
-    private final double PERIOD = 2.0;
-    private final double RADIUS;
-    private final String nikName;
+    private final double period = 2.0;
+    private final double radius;
     private double angle;
+    private String nikName;
     private Weapon weapon;
 
     public SpaceShip(String nikName, Weapon weapon, Planet planet, double radius) {
@@ -22,8 +22,12 @@ public class SpaceShip extends MovableObject {
         this.weapon = weapon;
         this.planet = planet;
         this.angle = 0;
-        this.RADIUS = radius;
+        this.radius = radius;
         this.currentPos = getInitPosition();
+    }
+
+    private Weapon getWeapon() {
+        return weapon;
     }
 
     /**
@@ -34,24 +38,20 @@ public class SpaceShip extends MovableObject {
      */
     @Override
     public void flyForward(double time) {
-        double newX = (RADIUS * Math.cos((2 * Math.PI * time) / PERIOD)) + planet.getPosition().getX();
-        double newY = (RADIUS * Math.sin((2 * Math.PI * time) / PERIOD)) + planet.getPosition().getY();
+        double newX = (radius * Math.cos((2 * Math.PI * time) / period)) + planet.getPosition().getX();
+        double newY = (radius * Math.sin((2 * Math.PI * time) / period)) + planet.getPosition().getY();
         newX = new BigDecimal(newX).setScale(4, RoundingMode.HALF_UP).doubleValue();
         newY = new BigDecimal(newY).setScale(4, RoundingMode.HALF_UP).doubleValue();
         currentPos.setX(newX);
         currentPos.setY(newY);
     }
 
-    private Coordinate getInitPosition() {
-        Coordinate coordinate = new Coordinate();
-        coordinate.setX((RADIUS * Math.cos((2 * Math.PI * 0.0) / PERIOD)) + planet.getPosition().getX());
-        coordinate.setY((RADIUS * Math.sin((2 * Math.PI * 0.0) / PERIOD)) + planet.getPosition().getY());
+    public Coordinate getInitPosition() {
+        Coordinate coordinate = new Coordinate(0.0, 0.0);
+        coordinate.setX((radius * Math.cos((2 * Math.PI * 0.0) / period)) + planet.getPosition().getX());
+        coordinate.setY((radius * Math.sin((2 * Math.PI * 0.0) / period)) + planet.getPosition().getY());
 
         return coordinate;
-    }
-
-    private Weapon getWeapon() {
-        return weapon;
     }
 
     public void setWeapon(Weapon weapon) {

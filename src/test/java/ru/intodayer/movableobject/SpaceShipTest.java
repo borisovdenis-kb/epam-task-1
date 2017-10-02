@@ -15,13 +15,14 @@ public class SpaceShipTest extends TestCase {
 
     @Test
     public void testShoot() throws Exception {
-        Planet planet        = new Planet(1000, new Coordinate(500, 500));
-        Weapon weaponOne     = new Weapon("Blaster", 20);
-        Asteroid asteroidOne = new Asteroid(new Coordinate(100, 200), planet, 100, 100);
-        Asteroid asteroidTwo = new Asteroid(new Coordinate(100, 200), planet, 200, 100);
-        Alien alienOne       = new Alien(new Coordinate(100, 200), planet, 100, weaponOne);
-        Alien alienTwo       = new Alien(new Coordinate(100, 200), planet, 200, weaponOne);
-        SpaceShip spaceShip  = new SpaceShip("Denisko", weaponOne, planet,50);
+        Planet planet           = new Planet(1000, new Coordinate(500, 500));
+        Weapon weaponOne        = new Weapon("Blaster", 20);
+        Coordinate intiPos      = new Coordinate(100, 200);
+        Alien alienOne          = new Alien(intiPos, planet, 100, weaponOne);
+        Alien alienTwo          = new Alien(intiPos, planet, 200, weaponOne);
+        Asteroid asteroidTwo    = new Asteroid(intiPos, planet, 200, 100);
+        Asteroid asteroidOne    = new Asteroid(intiPos, planet, 100, 100);
+        SpaceShip spaceShip     = new SpaceShip("Denisko", weaponOne, planet,50);
 
         /* test: decrease asteroid`s health by weaponOne with damage = 20, 3 times*/
         spaceShip.shoot(asteroidOne);

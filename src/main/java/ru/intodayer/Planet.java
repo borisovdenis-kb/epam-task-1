@@ -1,17 +1,17 @@
 package ru.intodayer;
 
 
-public class Planet {
-    private final Coordinate POSITION;
+public class Planet implements HealthInterface{
+    private final Coordinate position;
     private int health;
 
     public Planet(int health, Coordinate position) {
-        this.POSITION = position;
+        this.position = position;
         this.health = health;
     }
 
     public Coordinate getPosition() {
-        return POSITION;
+        return position;
     }
 
     public int getHealth() {
@@ -22,8 +22,7 @@ public class Planet {
         this.health = health;
     }
 
-    public void decreaseHealth(int value) { // TODO: Это можно сделать с помощью interface?
-        int hp = getHealth() - value;
-        setHealth(hp <= 0 ? 0 : hp);
+    public void decreaseHealth(int value) {
+        setHealth(decreaseHealth(getHealth(), value));
     }
 }

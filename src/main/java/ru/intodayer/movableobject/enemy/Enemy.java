@@ -3,35 +3,28 @@ package ru.intodayer.movableobject.enemy;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import ru.intodayer.HealthInterface;
 import ru.intodayer.Planet;
 import ru.intodayer.Coordinate;
 import ru.intodayer.movableobject.MovableObject;
 
 
-public class Enemy extends MovableObject {
+public class Enemy extends MovableObject implements HealthInterface {
     protected Coordinate previousPos;
-    protected final double SPEED = 2;
-    protected final double SPEED_OY;
-    protected final double TG;
+    protected final double speed = 2;
+    protected final double speedOy;
+    protected final double tangent;
     protected int health;
-
-    public Enemy() {
-        currentPos = null;
-        planet = null;
-        health = 0;
-        SPEED_OY = 0;
-        TG = 0;
-    }
 
     public Enemy(Coordinate position, Planet planet, int health) {
         super(position, planet);
         this.health = health;
-        this.TG = calcTG();
-        this.SPEED_OY = calcSpeedOY();
+        this.tangent = calcTG();
+        this.speedOy = calcSpeedOY();
     }
 
     private double calcSpeedOY() {
-        double speed = SPEED;
+        double speed = this.speed;
         if ((planet.getPosition().getY() - currentPos.getY()) < 0) {
             speed *= -1;
         }
@@ -53,8 +46,8 @@ public class Enemy extends MovableObject {
     @Override
     public void flyForward(double time) {
         previousPos = currentPos;
-        double newX = previousPos.getX() + SPEED_OY * time * TG;
-        double newY = previousPos.getY() + SPEED_OY * time;
+        double newX = previousPos.getX() + speedOy * time * tangent;
+        double newY = previousPos.getY() + speedOy * time;
         newX = new BigDecimal(newX).setScale(4, RoundingMode.HALF_UP).doubleValue();
         newY = new BigDecimal(newY).setScale(4, RoundingMode.HALF_UP).doubleValue();
         currentPos.setX(newX);
@@ -70,7 +63,6 @@ public class Enemy extends MovableObject {
     }
 
     public void decreaseHealth(int value) {
-        int hp = getHealth() - value;
-        setHealth(hp <= 0 ? 0 : hp);
+        setHealth(decreaseHealth(getHealth(), value));
     }
 }

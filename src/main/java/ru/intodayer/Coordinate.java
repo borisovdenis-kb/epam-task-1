@@ -2,15 +2,10 @@ package ru.intodayer;
 
 
 public class Coordinate {
-    public final double MAX_OX = 1000.0;
-    public final double MAX_OY = 1000.0;
+    private final double max_ox = 1000.0;
+    private final double max_oy = 1000.0;
     private double x;
     private double y;
-
-    public Coordinate() {
-        x = 0.0;
-        y = 0.0;
-    }
 
     public Coordinate(Coordinate coordinate) {
         x = coordinate.getX();
@@ -23,18 +18,20 @@ public class Coordinate {
     }
 
     private double checkX(double x) {
-        if (x >= 0 && x < MAX_OX) {
+        if (x >= 0 && x < max_ox) {
             return x;
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                    "coordinate.x must be in range [0.0, " + max_ox + "]");
         }
     }
 
     private double checkY(double y) {
-        if (y >= 0 && y < MAX_OX) {
+        if (y >= 0 && y < max_oy) {
             return y;
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                    "coordinate.y must be in range [0.0, " + max_oy + "]");
         }
     }
 
