@@ -39,7 +39,7 @@ public class Coordinate {
     }
 
     public double getDistance(Coordinate coordinate) {
-        return Math.sqrt(Math.abs(coordinate.x - x) + Math.abs(coordinate.y - y));
+        return Math.sqrt(Math.pow(Math.abs(coordinate.x - x), 2) + Math.pow(Math.abs(coordinate.y - y), 2));
     }
 
     @Override

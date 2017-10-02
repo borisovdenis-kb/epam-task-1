@@ -1,8 +1,12 @@
 package ru.intodayer.MovableObject;
 
 import ru.intodayer.Coordinate;
+import ru.intodayer.Planet;
 import ru.intodayer.Weapon;
 import ru.intodayer.MovableObject.Enemy.Enemy;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 // TODO: Singleton
 
@@ -13,9 +17,10 @@ public class SpaceShip extends MovableObject {
     private double angle;
     private Weapon weapon;
 
-    public SpaceShip(String nikName, Weapon weapon, double radius) {
+    public SpaceShip(String nikName, Weapon weapon, Planet planet, double radius) {
         this.nikName = nikName;
         this.weapon = weapon;
+        this.planet = planet;
         this.angle = 0;
         this.RADIUS = radius;
         this.currentPos = getInitPosition();
@@ -29,14 +34,18 @@ public class SpaceShip extends MovableObject {
      */
     @Override
     public void flyForward(double time) {
-        currentPos.setX(RADIUS * Math.cos((2 * Math.PI * time) / PERIOD));
-        currentPos.setY(RADIUS * Math.sin((2 * Math.PI * time) / PERIOD));
+        double newX = (RADIUS * Math.cos((2 * Math.PI * time) / PERIOD)) + planet.getPosition().getX();
+        double newY = (RADIUS * Math.sin((2 * Math.PI * time) / PERIOD)) + planet.getPosition().getY();
+        newX = new BigDecimal(newX).setScale(4, RoundingMode.HALF_UP).doubleValue();
+        newY = new BigDecimal(newY).setScale(4, RoundingMode.HALF_UP).doubleValue();
+        currentPos.setX(newX);
+        currentPos.setY(newY);
     }
 
     private Coordinate getInitPosition() {
         Coordinate coordinate = new Coordinate();
-        coordinate.setX(RADIUS * Math.cos((2 * Math.PI * 0.0) / PERIOD));
-        coordinate.setY(RADIUS * Math.sin((2 * Math.PI * 0.0) / PERIOD));
+        coordinate.setX((RADIUS * Math.cos((2 * Math.PI * 0.0) / PERIOD)) + planet.getPosition().getX());
+        coordinate.setY((RADIUS * Math.sin((2 * Math.PI * 0.0) / PERIOD)) + planet.getPosition().getY());
 
         return coordinate;
     }
