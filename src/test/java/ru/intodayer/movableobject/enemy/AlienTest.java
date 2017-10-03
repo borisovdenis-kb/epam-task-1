@@ -13,7 +13,7 @@ public class AlienTest extends TestCase {
     public void testShoot() throws Exception {
         Weapon weapon = new Weapon("Pistolet", 30);
         Planet planet = new Planet(1000, new Coordinate(500, 500));
-        Alien alien = new Alien(new Coordinate(100, 200), planet, 100, weapon);
+        Alien alien = new Alien(planet, new Coordinate(100, 200), 100, weapon);
 
         /* test: decrease planet`s health by weapon with damage = 30. 10 times */
         for (int i = 0; i < 10; i++) {
@@ -34,7 +34,7 @@ public class AlienTest extends TestCase {
         Coordinate startPos = new Coordinate(100, 200);
         Coordinate expected = new Coordinate(100.5333, 200.4);
         Weapon weapon = new Weapon("Pistolet", 30);
-        Alien alien = new Alien(startPos, planet, 100, weapon);
+        Alien alien = new Alien(planet, startPos, 100, weapon);
 
         /* test: changes coordinates of asteroid */
         alien.flyForward(0.2);

@@ -8,8 +8,8 @@ import ru.intodayer.Weapon;
 public class Alien extends Enemy {
     private Weapon weapon;
 
-    public Alien(Coordinate position, Planet planet, int health, Weapon weapon) {
-        super(position, planet, health);
+    public Alien(Planet planet, Coordinate position, int health, Weapon weapon) {
+        super(planet, position, health);
         this.weapon = weapon;
     }
 

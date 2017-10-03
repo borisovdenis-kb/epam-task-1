@@ -18,11 +18,11 @@ public class SpaceShipTest extends TestCase {
         Planet planet           = new Planet(1000, new Coordinate(500, 500));
         Weapon weaponOne        = new Weapon("Blaster", 20);
         Coordinate intiPos      = new Coordinate(100, 200);
-        Alien alienOne          = new Alien(intiPos, planet, 100, weaponOne);
-        Alien alienTwo          = new Alien(intiPos, planet, 200, weaponOne);
-        Asteroid asteroidTwo    = new Asteroid(intiPos, planet, 200, 100);
-        Asteroid asteroidOne    = new Asteroid(intiPos, planet, 100, 100);
-        SpaceShip spaceShip     = new SpaceShip("Denisko", weaponOne, planet,50);
+        Alien alienOne          = new Alien(planet, intiPos, 100, weaponOne);
+        Alien alienTwo          = new Alien(planet, intiPos, 200, weaponOne);
+        Asteroid asteroidTwo    = new Asteroid(planet, intiPos, 200, 100);
+        Asteroid asteroidOne    = new Asteroid(planet, intiPos, 100, 100);
+        SpaceShip spaceShip     = new SpaceShip(planet,"Denisko", weaponOne,50);
 
         /* test: decrease asteroid`s health by weaponOne with damage = 20, 3 times*/
         spaceShip.shoot(asteroidOne);
@@ -49,7 +49,7 @@ public class SpaceShipTest extends TestCase {
     public void testFlyForward() throws Exception {
         Weapon weapon = new Weapon("Blaster", 20);
         Planet planet = new Planet(1000, new Coordinate(500, 500));
-        SpaceShip spaceShip = new SpaceShip("Denisko", weapon, planet,50);
+        SpaceShip spaceShip = new SpaceShip(planet, "Denisko", weapon, 50);
 
         Coordinate expected1 = new Coordinate(550, 500);
         Coordinate expected2 = new Coordinate(450.0,500.0);

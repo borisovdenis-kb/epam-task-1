@@ -17,12 +17,12 @@ public class SpaceShip extends MovableObject {
     private String nikName;
     private Weapon weapon;
 
-    public SpaceShip(String nikName, Weapon weapon, Planet planet, double radius) {
+    public SpaceShip(Planet planet, String nikName, Weapon weapon, double radius) {
+        super(planet);
         this.nikName = nikName;
         this.weapon = weapon;
-        this.planet = planet;
-        this.angle = 0;
         this.radius = radius;
+        this.angle = 0;
         this.currentPos = getInitPosition();
     }
 

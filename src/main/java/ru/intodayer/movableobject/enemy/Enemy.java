@@ -16,8 +16,9 @@ public class Enemy extends MovableObject implements HealthInterface {
     protected final double tangent;
     protected int health;
 
-    public Enemy(Coordinate position, Planet planet, int health) {
-        super(position, planet);
+    public Enemy(Planet planet, Coordinate position, int health) {
+        super(planet);
+        this.currentPos = position;
         this.health = health;
         this.tangent = calcTG();
         this.speedOy = calcSpeedOY();

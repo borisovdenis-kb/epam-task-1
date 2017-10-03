@@ -11,8 +11,7 @@ public abstract class MovableObject {
     public MovableObject() {
     }
 
-    public MovableObject(Coordinate position, Planet planet) {
-        this.currentPos = position;
+    public MovableObject(Planet planet) {
         this.planet = planet;
     }
 
